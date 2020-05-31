@@ -15,8 +15,8 @@ const defaultMap =
 	MAPBOX_ACCESS_TOKEN;
 
 const MapWrapper = styled.div`
-	height: 600px;
-	width: 800px;
+	height: 100%;
+	width: 100%;
 
 	#map {
 		height: 100%;
@@ -60,7 +60,7 @@ const DefaultMap = (props) => {
 			},
 		} = e;
 		setCurrentSelectedState(properties.STATE_NAME);
-		mapRef.current.leafletElement.fitBounds(e.target.getBounds());
+		// mapRef.current.leafletElement.fitBounds(e.target.getBounds());
 	};
 
 	const onEachFeature = (feature, layer) => {
