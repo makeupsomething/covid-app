@@ -117,7 +117,7 @@ const Breakdown = (props) => {
 			<div>
 				{currentDataNo2 && (
 					<>
-						<Header>N02</Header>
+						<Header>N02 - Normalized</Header>
 						<div>
 							Mean: {currentDataNo2.Mean.toFixed(3)} -{' '}
 							{getStatus(currentDataNo2.Mean)}{' '}
@@ -155,7 +155,7 @@ const Breakdown = (props) => {
 			<div>
 				{currentDataOzone && (
 					<>
-						<Header>Ozone</Header>
+						<Header>Ozone - Normalized</Header>
 						<div>
 							Mean: {currentDataOzone.Mean.toFixed(3)} -{' '}
 							{getStatus(currentDataOzone.Mean)}{' '}
@@ -203,7 +203,7 @@ const Breakdown = (props) => {
 			<div>
 				{currentDataAerosol && (
 					<>
-						<Header>Aerosol</Header>
+						<Header>Aerosol - Normalized</Header>
 						<div>
 							Mean: {currentDataAerosol.Mean.toFixed(3)} -{' '}
 							{getStatus(currentDataAerosol.Mean)}{' '}
