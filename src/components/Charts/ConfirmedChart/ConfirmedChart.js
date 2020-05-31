@@ -7,8 +7,13 @@ import 'echarts/lib/component/tooltip';
 import 'echarts/lib/component/calendar';
 import 'echarts/lib/component/visualMap';
 
+const Header = styled.h2`
+	color: white;
+	margin-bottom: 0px;
+`;
+
 const ChartContainer = styled.div`
-	width: 100%;
+	width: 1200px;
 	height: 200px;
 `;
 
@@ -35,6 +40,10 @@ const ConfirmedChart = (props) => {
 			const max = Math.max(...sortedConfirmed.map((data) => data.Gt));
 
 			const option = {
+				grid: {
+					top: 0,
+					bottom: 0,
+				},
 				visualMap: {
 					show: false,
 					min,
@@ -65,7 +74,12 @@ const ConfirmedChart = (props) => {
 		}
 	}, [setCurrentSelectedDate, currentStateDataConfirmed, refId]);
 
-	return <ChartContainer id={refId} />;
+	return (
+		<>
+			<Header>Confirmed Cases</Header>
+			<ChartContainer id={refId} />
+		</>
+	);
 };
 
 export default ConfirmedChart;

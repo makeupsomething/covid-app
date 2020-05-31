@@ -7,8 +7,13 @@ import 'echarts/lib/component/tooltip';
 import 'echarts/lib/component/calendar';
 import 'echarts/lib/component/visualMap';
 
+const Header = styled.h2`
+	color: white;
+	margin-bottom: 0px;
+`;
+
 const ChartContainer = styled.div`
-	width: 100%;
+	width: 1200px;
 	height: 200px;
 `;
 
@@ -53,9 +58,9 @@ const ActivityChart = (props) => {
 										`${sortedNo2[i].Date}`,
 										'YYYYMMDD',
 									).format('YYYY-MM-DD'),
-									sortedNo2[i].Normalisation +
-										ozoneData.Normalisation +
-										aerosolData.Normalisation,
+									sortedNo2[i].Min +
+										ozoneData.Min +
+										aerosolData.Min,
 								]);
 								mostRecentDate = dayjs(
 									`${sortedNo2[i].Date}`,
@@ -66,13 +71,16 @@ const ActivityChart = (props) => {
 					}
 				}
 				setCurrentSelectedDate(mostRecentDate);
-				console.log(data);
 				return data;
 			};
 
 			const myChart = echarts.init(document.getElementById(refId));
 
 			const option = {
+				grid: {
+					top: 0,
+					bottom: 0,
+				},
 				visualMap: {
 					show: false,
 					min: -3,
@@ -109,7 +117,12 @@ const ActivityChart = (props) => {
 		setCurrentSelectedDate,
 	]);
 
-	return <ChartContainer id={refId} />;
+	return (
+		<>
+			<Header>Activiy</Header>
+			<ChartContainer id={refId} />
+		</>
+	);
 };
 
 export default ActivityChart;
