@@ -1,1 +1,1 @@
-export {default} from './CalenderChart'
+export { default } from './CalenderChart';
