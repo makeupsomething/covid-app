@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import { Map, TileLayer, GeoJSON } from 'react-leaflet';
-
 import eastCoastGeojson from './data/geojson/east-coast-states.json';
 
 const MAPBOX_ACCESS_TOKEN = `${process.env.REACT_APP_MAP_BOX_KEY}`;
