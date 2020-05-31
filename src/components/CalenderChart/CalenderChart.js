@@ -2,7 +2,9 @@ import React, { useLayoutEffect } from 'react';
 import styled from 'styled-components'
 import echarts from 'echarts/lib/echarts';
 import 'echarts/lib/chart/heatmap';
+import 'echarts/lib/component/tooltip'
 import 'echarts/lib/component/calendar';
+import 'echarts/lib/component/visualMap'
 
 const ChartContainer = styled.div`
     width: 100%;
@@ -35,6 +37,7 @@ const CalenderChart = (props) => {
                 min: 0,
                 max: 10000
             },
+            tooltip: {},
             calendar: {
                 range: '2017'
             },
