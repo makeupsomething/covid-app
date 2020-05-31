@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import { Map, TileLayer, GeoJSON } from 'react-leaflet';
 
-import newYorkGeoJson from './data/geojson/new_york.json';
+import eastCoastGeojson from './data/geojson/east-coast-states.json';
 
 const MAPBOX_ACCESS_TOKEN = `${process.env.REACT_APP_MAP_BOX_KEY}`;
 const MAPBOX_STYLE_ID = `${process.env.REACT_APP_MAPBOX_STYLE_ID}`;
@@ -25,21 +25,17 @@ const MapWrapper = styled.div`
 	}
 `;
 
-const DefaultMap = () => {
+const DefaultMap = (props) => {
+	const { setCurrentSelectedState } = props;
 	const [position, setPosition] = useState({
 		lng: -73.962855463380421,
 		lat: 40.713571109780113,
 	});
-	const [zoom, setZoom] = useState(10);
+	const [zoom, setZoom] = useState(5);
 	const mapRef = useRef(null);
-
-	useEffect(() => {
-		console.log(mapRef);
-	}, [mapRef]);
 
 	const highlightFeature = (e) => {
 		const layer = e.target;
-
 		layer.setStyle({
 			weight: 5,
 			dashArray: '',
@@ -50,7 +46,6 @@ const DefaultMap = () => {
 
 	const resetHighlight = (e) => {
 		const layer = e.target;
-
 		layer.setStyle({
 			color: '#c0464c',
 			weight: 2,
@@ -59,7 +54,13 @@ const DefaultMap = () => {
 		});
 	};
 
-	const zoomToFeature = (e) => {
+	const handleClick = (e) => {
+		const {
+			target: {
+				feature: { properties },
+			},
+		} = e;
+		setCurrentSelectedState(properties.STATE_NAME);
 		mapRef.current.leafletElement.fitBounds(e.target.getBounds());
 	};
 
@@ -67,7 +68,7 @@ const DefaultMap = () => {
 		layer.on({
 			mouseover: highlightFeature,
 			mouseout: resetHighlight,
-			click: zoomToFeature,
+			click: handleClick,
 		});
 	};
 
@@ -80,7 +81,7 @@ const DefaultMap = () => {
 				zoom={zoom}
 			>
 				<GeoJSON
-					data={newYorkGeoJson}
+					data={eastCoastGeojson}
 					style={() => ({
 						color: '#c0464c',
 						weight: 2,
