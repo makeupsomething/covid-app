@@ -30,7 +30,7 @@ const PredictedChart = (props) => {
 				return sortedConfirmed.map((data) => {
 					return [
 						dayjs(`${data.Date}`, 'YYYYMMDD').format('YYYY-MM-DD'),
-						data.Pred,
+						data.pred,
 					];
 				});
 			};

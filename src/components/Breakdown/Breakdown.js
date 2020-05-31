@@ -111,7 +111,7 @@ const Breakdown = (props) => {
 			{currentSelectedState && currentSelectedDate && currentDataNo2 && (
 				<h2>
 					Predicted Cases for {currentSelectedState} on{' '}
-					{currentSelectedDate}: {currentDataNo2.Pred}
+					{currentSelectedDate}: {currentDataNo2.pred}
 				</h2>
 			)}
 			<div>
